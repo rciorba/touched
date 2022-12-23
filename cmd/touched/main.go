@@ -37,10 +37,11 @@ func PrintUncommitted() error {
 func main() {
 	var IgnoreUncommitted bool
 	var rootCmd = &cobra.Command{
-		Use:   "print [string to print]",
-		Short: "Print anything to the screen",
-		Long: `touched will help you easily list modified files
-It assumes you use git for version controll.`,
+		Use:   "touched [branch name]",
+		Short: "Get list of modified files",
+		Long: fmt.Sprintf(`touched will help you easily list modified files.
+It assumes you use git for version control.
+version %s (%s)`, version, commit),
 		Args: cobra.MaximumNArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			if len(args) != 0 {
